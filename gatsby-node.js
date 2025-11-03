@@ -16,13 +16,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const template = path.resolve("./src/components/product.js"); // seu template
+  const template = path.resolve("./src/components/Product.js");
 
   result.data.allMdx.nodes.forEach(node => {
     createPage({
-      path: `/products/${node.frontmatter.slug}`, // rota dinâmica
+      path: `/products/${node.frontmatter.slug}`,
       component: template,
-      context: { id: node.id }, // passado para a query do template
+      context: { id: node.id },
     });
   });
 };
