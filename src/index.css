@@ -14,3 +14,75 @@ main {
   margin: 0px;
   padding: 0px;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #a843a8;
+  height: 50px;
+  padding: 10px;
+  color: #fff;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+p {
+  font-size: 1.5rem;
+  color: #fff
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  margin-top: 20px;
+}
+    
+input, textarea {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent
+}
+
+input::placeholder, textarea::placeholder {
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a843a8;
+  height: 30px;
+  padding: 10px;
+}
