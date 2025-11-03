@@ -3,15 +3,43 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `JamStack_com_Gatsby`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `CellStore`,
+    siteUrl: `https://filelib.netlify.app`
   },
-  plugins: ["gatsby-plugin-mdx", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+  plugins: [
+    "gatsby-plugin-mdx",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": `${__dirname}/src`
+      },
+      __key: "pages"
     },
-    __key: "pages"
-  }]
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": `${__dirname}/src/pages`
+      },
+      __key: "pages"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "components",
+        "path": "./src/components/"
+      },
+      __key: "components"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "products",
+        "path": `${__dirname}/products`
+      },
+      __key: "products"
+    },
+    
+  ]
 };
