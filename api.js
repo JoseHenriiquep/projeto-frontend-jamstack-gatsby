@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/create-product', (req, res) => {
+app.post('/create-product', async (req, res) => {
   const { title, price, description, imageUrl } = req.body;
   const slug = slugify(title, { lower: true });
 
@@ -33,6 +33,12 @@ description: ${description}
 
     fs.writeFileSync(filePath, fileContent);
     res.json({ success: true, message: 'Produto criado com sucesso!' });
+
+    const rebuild = await fetch('https://api.netlify.com/build_hooks/690837cbd8dd06a42067d058', {
+      method: 'POST'
+    });
+
+    console.log('Netlify rebuild disparado:', rebuild.status);
   } catch (error) {
     console.log(error);
   }
