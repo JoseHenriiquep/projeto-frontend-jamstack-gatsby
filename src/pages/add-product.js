@@ -30,7 +30,7 @@ export default function AddProduct() {
   const [form, setForm] = useState({
     title: '',
     price: '',
-    imageUrl: '',
+    image: '',
     description: '',
   });
 
@@ -38,27 +38,31 @@ export default function AddProduct() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const validateForm = () => {
+    if (form.title.length < 3) return 'O nome do produto deve conter mais de 3 caracteres.';
+    if (isNaN(form.price)) return 'Informe um preço válido.';
+    if (!form.image.startsWith('http'))
+      return 'Informe uma URL de imagem válida.';
+    if (form.description.length < 10)
+      return 'A descrição deve ter pelo menos 10 caracteres.';
+    return null; 
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost:3000/create-product', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-      });
-      const data = await response.json();
-      alert(data.message);
-      
-    } catch (error) {
-      console.error(error);
-      alert('Falha ao enviar o produto.');
-    }
+     const error = validateForm();
+      if (error) {
+        alert(error);
+        return;
+      }
+
+    alert('Formulário enviado')
 
     setForm({
       title: '',
       price: '',
-      imageUrl: '',
+      image: '',
       description: '',
     });
   };
@@ -69,10 +73,11 @@ export default function AddProduct() {
       <div style={styles.container}>
         <div style={styles.formContainer}>
           <p>Adicione um produto</p>
-          <form onSubmit={handleSubmit} method='post'>
+          <form onSubmit={handleSubmit} method='POST' data-netlify="true" data-netlify-honeypot='bot-field'>
+            <input type="hidden" name="form-name" value="add-product" />
             <input name="title" placeholder="Nome do produto" value={form.title} onChange={handleChange} required/>
             <input name="price" placeholder="Preço" value={form.price} onChange={handleChange} required/>
-            <input name="imageUrl" placeholder="URL da imagem" value={form.imageUrl} onChange={handleChange} required/>
+            <input name="image" placeholder="URL da imagem" value={form.image} onChange={handleChange} required/>
             <textarea name="description" placeholder="Descrição" value={form.description} onChange={handleChange} required/>
             <button type="submit">Criar Produto</button>
           </form>
