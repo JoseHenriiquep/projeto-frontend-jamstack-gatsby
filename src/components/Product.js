@@ -2,21 +2,38 @@ import { graphql } from 'gatsby';
 import Header from './Header';
 import Footer from './Footer';
 import React from 'react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const Product = ({ data }) => {
 
+  const styles = {
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      gap: '20px',
+      height: '100%',
+      padding: '20px',
+      textAlign: 'center'
+    },
+    p: {
+      color: '#000'
+    }
+  }
+
   return (
-    
     <main>
       <Header />
+      <div style={styles.container}>
         <h1>{data.mdx.frontmatter.title}</h1>
-        <p>Preço: R$ {data.mdx.frontmatter.price}</p>
         {data.mdx.frontmatter.image && (
-          <img src={data.mdx.frontmatter.image} alt={data.mdx.frontmatter.title} style={{ maxWidth: "300px" }} />
+          <GatsbyImage image={getImage(data.mdx.frontmatter.image)} alt={data.mdx.frontmatter.title} style={styles.img} />
         )}
-        <div>
-          <p>{data.mdx.body}</p>
-        </div>
+        <p style={styles.p}><b>Preço:</b> R$ {data.mdx.frontmatter.price}</p>
+        <p style={styles.p}><b>Descrição:</b> {data.mdx.body}</p>
+      </div>
       <Footer />
     </main>
   )
@@ -28,7 +45,11 @@ export const query = graphql`
       frontmatter {
         title
         price
-        image
+        image {
+          childImageSharp {
+            gatsbyImageData(width: 300, height: 300, placeholder: BLURRED)
+          }
+        }
       }
       body
     }

@@ -35,7 +35,7 @@ export default function AddProduct() {
         <div style={styles.formContainer}>
           <p>Adicione um produto</p>
           <form method="post" data-netlify="true" name="add-product">
-            <input type="hidden" name="form-name" />
+            <input type="hidden" name="form-name" value="add-product"/>
             <input name="title" placeholder="Nome do produto" required minLength="3"/>
             <input type="number" name="price" placeholder="Preço" required min="1.00" step="0.01"/>
             <input name="image" placeholder="URL da imagem" required type="url"/>

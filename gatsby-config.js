@@ -4,10 +4,13 @@
 module.exports = {
   siteMetadata: {
     title: `CellStore`,
-    siteUrl: `https://filelib.netlify.app`
+    siteUrl: `https://cell-store-gatsby.netlify.app/`
   },
   plugins: [
     "gatsby-plugin-mdx",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: 'gatsby-source-filesystem',
       options: {
