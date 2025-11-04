@@ -4,6 +4,8 @@
 module.exports = {
   siteMetadata: {
     title: `CellStore`,
+    description: `A CellStore é sua loja online`,
+    author: `JoseHenriiquep`,
     siteUrl: `https://cell-store-gatsby.netlify.app/`
   },
   plugins: [
@@ -11,6 +13,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-sitemap",
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -15,3 +15,11 @@ export default function Products() {
     </main>
   )
 }
+
+export const Head = () => (
+  <>
+    <title>Produtos</title>
+    <meta name="title" content="Produtos" />
+    <meta name="description" content="Lista de produtos" />
+  </>
+)

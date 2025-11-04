@@ -56,4 +56,12 @@ export const query = graphql`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Produto</title>
+    <meta name="title" content="Produto" />
+    <meta name="description" content="Informações do produto" />
+  </>
+)
+
 export default Product;
